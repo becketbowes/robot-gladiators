@@ -9,7 +9,7 @@
 // create and save player robot's name, computer robot's name 
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
-var playerAttack = 30;
+var playerAttack = 10;
 var playerMoney = 10;
 
 console.log(playerName, playerHealth, playerAttack, playerMoney);
@@ -17,6 +17,8 @@ console.log(playerName, playerHealth, playerAttack, playerMoney);
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
+
+
 
 var fight = function(enemyName) {
     while (playerHealth > 0 && enemyHealth > 0) {
@@ -76,9 +78,16 @@ var fight = function(enemyName) {
 
 // execute game
 for(var i = 0; i < enemyNames.length; i++) {
-    var pickedEnemyName = enemyNames[i];
-    enemyHealth = 50;
-    fight(pickedEnemyName);
+    if (playerHealth > 0) {
+        window.alert("Welcome to Robot Gladiators! Round " + (i + 1))
+        var pickedEnemyName = enemyNames[i];
+        enemyHealth = 50;
+        fight(pickedEnemyName);
+    }
+    else {
+        window.alert("You have lost your robot in battle! Game Over!");
+        break;
+    }
 }
 
 console.log(playerName, playerHealth, playerAttack, playerMoney);

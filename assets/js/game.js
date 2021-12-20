@@ -9,7 +9,7 @@
 // create and save player robot's name, computer robot's name 
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
-var playerAttack = 10;
+var playerAttack = 30;
 var playerMoney = 10;
 
 console.log(playerName, playerHealth, playerAttack, playerMoney);
@@ -19,6 +19,9 @@ var enemyHealth = 50;
 var enemyAttack = 12;
 
 var fight = function(enemyName) {
+// repeat and execute as long as enemy robot is alive
+    while(enemyHealth > 0) {
+
 // alert player that the round is starting
     window.alert("Welcome to Robot Gladiators!");
 
@@ -72,6 +75,7 @@ else if (promptFight === "skip" || promptFight === "SKIP") {
         playerMoney = playerMoney - 2;
     }
 
+
 // if no, run fight prompt again
 else {
         fight();
@@ -82,7 +86,11 @@ else {window.alert("You need to choose a valid option. Try again!");
 }
 console.log(playerName, playerHealth, playerAttack, playerMoney);
 }
+}
 
+// execute game
 for(var i = 0; i < enemyNames.length; i++) {
-    fight(enemyNames[i]);
+    var pickedEnemyName = enemyNames[i];
+    enemyHealth = 50;
+    fight(pickedEnemyName);
 }
